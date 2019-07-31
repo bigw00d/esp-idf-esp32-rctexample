@@ -17,7 +17,7 @@ static const uint32_t LIGHT_ON = 0x01768877;
 static const uint32_t LIGHT_OFF = 0x017600FF;
 
 const rmt_channel_t RMT_CHANNEL = RMT_CHANNEL_0;
-const gpio_num_t IR_PIN = GPIO_NUM_18;
+const gpio_num_t IR_PIN = GPIO_NUM_19;
 const int  RMT_TX_CARRIER_EN = 1;   // Enable carrier for IR transmitter test with IR led
 
 const int leaderOnUs = 9000;
