@@ -3,12 +3,14 @@
 ## Requirement
 
 * ESP-IDF (xtensa-esp32-elf at the 1.22.0-80) [DL site](https://dl.espressif.com/dl/xtensa-esp32-elf-linux64-1.22.0-80-g6c4433a-5.2.0.tar.gz)
-* ESP-IDF
-* ESP-IDF
+* [ESPr® Developer 32](https://www.switch-science.com/catalog/3210/)
+* [5mm赤外線LED](http://akizukidenshi.com/catalog/g/gI-03261/)
+* [トランジスタ　２ＳＣ１８１５ＧＲ](http://akizukidenshi.com/catalog/g/gI-00881/)
+* 抵抗（100Ω、10Ω）
 
 ## Pin Assignment
 
-<img align="center" width="50%" src="./fix_content.png" />
+<img align="center" width="50%" src="./connect_info_transmitter.png" />
 
 ## Licence
 
