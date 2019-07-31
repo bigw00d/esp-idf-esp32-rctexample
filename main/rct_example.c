@@ -10,13 +10,15 @@
 #include "esp_log.h"
 #include "driver/rmt.h"
 
+
 static const char* LOG_TAG = "TEST_LOG";
 
 static const uint32_t LIGHT_ON = 0x01768877;
 static const uint32_t LIGHT_OFF = 0x017600FF;
 
-const rmt_channel_t channel = RMT_CHANNEL_0;
-const gpio_num_t irPin = GPIO_NUM_18;
+const rmt_channel_t RMT_CHANNEL = RMT_CHANNEL_0;
+const gpio_num_t IR_PIN = GPIO_NUM_18;
+const int  RMT_TX_CARRIER_EN = 1;   // Enable carrier for IR transmitter test with IR led
 
 const int leaderOnUs = 9000;
 const int leaderOffUs = 4500;
@@ -55,7 +57,7 @@ void sendNECRCData(uint32_t sendCode) {
     }
   }
 
-  
+
   // Data code
   for (int i = 0; i < 8; i++) {
     sendData[i + 17].duration0 = dataOnUs;
@@ -79,8 +81,8 @@ void sendNECRCData(uint32_t sendCode) {
   sendData[33].duration1 = stopbitOffUs;
   sendData[33].level1 = 0;
 
-  rmt_write_items(channel, sendData, sendDataLength, true);
-  rmt_wait_tx_done(channel, portMAX_DELAY); // wait tx (no limit)
+  rmt_write_items(RMT_CHANNEL, sendData, sendDataLength, true);
+  rmt_wait_tx_done(RMT_CHANNEL, portMAX_DELAY); // wait tx (no limit)
 
 }
 
@@ -89,9 +91,9 @@ void setup_rmt_config() {
   rmt_config_t rmtConfig;
 
   rmtConfig.rmt_mode = RMT_MODE_TX;  // transmit mode
-  rmtConfig.channel = channel;  // channel to use 0 - 7
+  rmtConfig.channel = RMT_CHANNEL;  // channel to use 0 - 7
   rmtConfig.clk_div = 80;  // clock divider 1 - 255. source clock is 80MHz -> 80MHz/80 = 1MHz -> 1 tick = 1 us
-  rmtConfig.gpio_num = irPin; // pin to use
+  rmtConfig.gpio_num = IR_PIN; // pin to use
   rmtConfig.mem_block_num = 1; // memory block size
 
   rmtConfig.tx_config.loop_en = 0; // no loop
