@@ -101,10 +101,8 @@ void setup_rmt_config() {
   rmtConfig.tx_config.carrier_duty_percent = 33; // duty
   rmtConfig.tx_config.carrier_level =  RMT_CARRIER_LEVEL_HIGH; // carrier level
   rmtConfig.tx_config.carrier_en = RMT_TX_CARRIER_EN;  // carrier enable
-  // rmtConfig.tx_config.carrier_en = 1;  // carrier enable
   rmtConfig.tx_config.idle_level =  RMT_IDLE_LEVEL_LOW ; // signal level at idle
   rmtConfig.tx_config.idle_output_en = true;  // output if idle
-  // rmtConfig.tx_config.idle_output_en = 1;  // output if idle
 
   rmt_config(&rmtConfig);
   rmt_driver_install(rmtConfig.channel, 0, 0);
